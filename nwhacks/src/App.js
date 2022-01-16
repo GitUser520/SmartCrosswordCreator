@@ -31,8 +31,8 @@ class App extends React.Component {
     }
 
     initCrossword() {
-        let wordList = this.state.words.split(/[\n\r\s]+/);
-        wordList = wordList.filter(item => item);
+        let wordList = this.state.words.split(/[\n\r\s,.]+/);
+        wordList = wordList.filter(item => item.match(/^[A-Za-z]+$/));
         this.setState(state => ({
             open: !state.open,
             crossword: new Crossword(wordList, state.num)
