@@ -36,12 +36,13 @@ class App extends React.Component {
     initCrossword() {
         let wordList = this.state.words.split(/[\n\r\s,.]+/);
         wordList = wordList.filter(item => item.match(/^[A-Za-z]+$/) && item.length > 2); // TODO: get meanings called here
+        wordList = wordList.map(item => item.toLowerCase());
         let newCrossword =  new Crossword(wordList, this.state.num);
         let current = Array(newCrossword.grid.length).fill().map(() => Array(newCrossword.grid[0].length).fill(null));
         this.setState(state => ({
             open: !state.open,
             crossword: newCrossword,
-            inputGrid: current
+            inputGrid: current,
         }));
     }
 
@@ -114,7 +115,7 @@ class App extends React.Component {
             for (let j = 0; j < this.state.crossword.grid[0].length; j++) {
                 if (this.state.crossword.grid[i][j] !== null) {
                     tempGrid[i][j] = this.state.crossword.grid[i][j].toUpperCase();
-                    document.getElementById(i*this.state.crossword.grid.length + j).value = this.state.crossword.grid[i][j].toUpperCase();
+                    document.getElementById(i*this.state.crossword.grid[0].length + j).value = this.state.crossword.grid[i][j].toUpperCase();
                 }
             }
         }
@@ -134,7 +135,7 @@ class App extends React.Component {
         for (let i = 0; i < this.state.crossword.grid.length; i++) {
             for (let j = 0; j < this.state.crossword.grid[0].length; j++) {
                 if (this.state.crossword.grid[i][j] !== null) {
-                    document.getElementById(i*this.state.crossword.grid.length + j).value = "";
+                    document.getElementById(i*this.state.crossword.grid[0].length + j).value = "";
                 }
             }
         }
@@ -151,7 +152,7 @@ class App extends React.Component {
 
     clicked = (i, j) => {
         let newGrid = this.state.inputGrid;
-        newGrid[i][j] = document.getElementById(i*this.state.crossword.grid.length + j).value;
+        newGrid[i][j] = document.getElementById(i*this.state.crossword.grid[0].length + j).value;
         this.setState(state => ({
             inputGrid: newGrid
         }));

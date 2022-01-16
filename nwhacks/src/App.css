@@ -36,6 +36,7 @@
 .hints-container {
   display: flex;
   margin-left: 24px;
+  margin-bottom: 36px;
 }
 
 .hints {

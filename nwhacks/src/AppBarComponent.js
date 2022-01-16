@@ -35,6 +35,7 @@ class CompleteAppBar extends React.Component {
                             Smart Crossword Creator
                         </Typography>
                         <Button
+                            style={{"margin-right": "12px"}}
                             variant={"contained"}
                             color={"secondary"}
                             onClick={() => {
@@ -44,6 +45,7 @@ class CompleteAppBar extends React.Component {
                             Check
                         </Button>
                         <Button
+                            style={{"margin-right": "12px"}}
                             variant={"contained"}
                             color={"secondary"}
                             onClick={() => {
@@ -53,6 +55,7 @@ class CompleteAppBar extends React.Component {
                             Display
                         </Button>
                         <Button
+                            style={{height: "36px", width:"150px"}}
                             variant={"contained"}
                             color={"secondary"}
                             onClick={() => {
@@ -62,6 +65,7 @@ class CompleteAppBar extends React.Component {
                             New Game
                         </Button>
                         <Button
+                            style={{"margin-left": "12px"}}
                             variant={"contained"}
                             color={"secondary"}
                             onClick={() => {
