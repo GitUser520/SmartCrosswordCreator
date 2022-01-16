@@ -8,12 +8,6 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Crossword from "./Crossword.js";
 
-// export const AppBarComponent = (props) => {
-//     return (
-//         <CompleteAppBar state={props.state} />
-//     );
-// }
-
 class CompleteAppBar extends React.Component {
 
     checkSolution() {

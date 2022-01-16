@@ -27,9 +27,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea4ec7fc-c228-452f-9ecf-c6439985695b" name="Changes" comment="Testing commit.">
+    <list default="true" id="ea4ec7fc-c228-452f-9ecf-c6439985695b" name="Changes" comment="Changed layout of pop-up">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nwhacks/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/nwhacks/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nwhacks/src/AppBarComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/nwhacks/src/AppBarComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nwhacks/src/Menu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nwhacks/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/nwhacks/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642280387325</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Changed layout of pop-up">
+      <created>1642355048878</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1642355048878</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,7 +112,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Testing commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing commit." />
+    <MESSAGE value="Changed layout of pop-up" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed layout of pop-up" />
   </component>
   <component name="WindowStateProjectService">
     <state x="100" y="125" width="738" height="628" key="DiffContextDialog" timestamp="1642299842345">
@@ -118,9 +128,13 @@
       <screen x="0" y="25" width="1440" height="828" />
     </state>
     <state x="321" y="356" key="VCS.ChangelistChooser/0.25.1440.828@0.25.1440.828" timestamp="1642299676377" />
-    <state x="407" y="357" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1642309407631">
+    <state x="282" y="176" key="Vcs.Push.Dialog.v2" timestamp="1642355054913">
       <screen x="0" y="25" width="1440" height="829" />
     </state>
-    <state x="407" y="357" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1440.829@0.25.1440.829" timestamp="1642309407631" />
+    <state x="282" y="176" key="Vcs.Push.Dialog.v2/0.25.1440.829@0.25.1440.829" timestamp="1642355054913" />
+    <state x="407" y="357" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1642355585701">
+      <screen x="0" y="25" width="1440" height="829" />
+    </state>
+    <state x="407" y="357" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1440.829@0.25.1440.829" timestamp="1642355585701" />
   </component>
 </project>
