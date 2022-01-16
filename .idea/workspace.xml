@@ -27,9 +27,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea4ec7fc-c228-452f-9ecf-c6439985695b" name="Changes" comment="deleted menu and menu/login buttons">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ea4ec7fc-c228-452f-9ecf-c6439985695b" name="Changes" comment="small change to workspace?" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642355748874</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="small change to workspace?">
+      <created>1642357041368</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1642357041368</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,7 +123,8 @@
     <MESSAGE value="Testing commit." />
     <MESSAGE value="Changed layout of pop-up" />
     <MESSAGE value="deleted menu and menu/login buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted menu and menu/login buttons" />
+    <MESSAGE value="small change to workspace?" />
+    <option name="LAST_COMMIT_MESSAGE" value="small change to workspace?" />
   </component>
   <component name="WindowStateProjectService">
     <state x="100" y="125" width="738" height="628" key="DiffContextDialog" timestamp="1642299842345">
