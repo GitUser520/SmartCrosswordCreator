@@ -7,10 +7,12 @@ import {AppBarComponent} from "./AppBarComponent.js";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
+import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import Typography from '@mui/material/Typography';
 
 import Axios from "axios";
 
@@ -106,8 +108,16 @@ class App extends React.Component {
         return (
             <div>
                 <Dialog open={this.state.open} onClose={() => this.initCrossword()} fullScreen TransitionComponent={Transition}>
-                    <DialogTitle>Please Enter Vocabulary</DialogTitle>
-                    <DialogContent>
+                    <DialogTitle className = "header" fontSize = "30px">Smart Crossword Creator
+                    </DialogTitle>
+                    <DialogContent className = "header">
+                        <DialogContentText>
+                            Enter your vocabulary below to create a crossword.
+                            <br/>
+                            Please do not include any one or two letter words, and include only a space between every word
+                            <br/>
+                            For Example: Apple Banana Citrus Watermelon
+                        </DialogContentText>
                         <br />
                         <TextField ref="num" defaultValue={10} fullWidth label="Number of words per crossword" type="number" onChange={this.handleNumsChange}/>
                         <TextField
@@ -115,15 +125,30 @@ class App extends React.Component {
                             autoFocus
                             margin="normal"
                             id="name"
-                            label="Words"
+                            label={
+                                <Typography variant="headline" component="h2"> Words </Typography>
+                            }
+                            fontSize = '25px'
                             multiline
-                            rows={30}
+                            rows={16}
                             fullWidth
+                            variant="outlined"
                             onChange={this.handleWordsChange}
                         />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => this.initCrossword()}>Finish</Button>
+                       <Button
+                           onClick={() => this.initCrossword()}
+                           variant="contained"
+                           style ={{
+                               maxWidth: '140px',
+                               maxHeight: '70px',
+                               minWidth: '140px',
+                               minHeight: '70px',
+                               fontSize: '18px'
+                           }}>
+                           Create Crossword!
+                       </Button>
                     </DialogActions>
                 </Dialog>
                 <AppBarComponent/>
