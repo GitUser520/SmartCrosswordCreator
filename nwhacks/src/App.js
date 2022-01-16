@@ -85,6 +85,7 @@ class App extends React.Component {
             this.getMeanings();
             return (
                 <div>
+                    <AppBarComponent state={this.state}/>
                     <div className="crossword-container">
                         <CrosswordComponent grid={this.state.crossword.grid}/>
                     </div>
