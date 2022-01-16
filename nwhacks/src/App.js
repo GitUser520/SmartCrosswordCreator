@@ -27,6 +27,7 @@ class App extends React.Component {
             open: true,
             dictionary: {},
             crossword: null,
+            inputGrid: [],
             words: "",
             num: 10
         };
@@ -35,9 +36,12 @@ class App extends React.Component {
     initCrossword() {
         let wordList = this.state.words.split(/[\n\r\s,.]+/);
         wordList = wordList.filter(item => item.match(/^[A-Za-z]+$/) && item.length > 2); // TODO: get meanings called here
+        let newCrossword =  new Crossword(wordList, this.state.num);
+        let current = Array(newCrossword.grid.length).fill().map(() => Array(newCrossword.grid[0].length).fill(null));
         this.setState(state => ({
             open: !state.open,
-            crossword: new Crossword(wordList, state.num)
+            crossword: newCrossword,
+            inputGrid: current
         }));
     }
 
@@ -65,6 +69,7 @@ class App extends React.Component {
                             [response.data[0].word]: response.data[0].meanings[0].definitions[0].definition
                         }
                     }));
+                    this.forceUpdate()
                 });
             }
             for (let i = 0; i < this.state.crossword.verticalWords.length; i++) {
@@ -77,6 +82,7 @@ class App extends React.Component {
                             [response.data[0].word]: response.data[0].meanings[0].definitions[0].definition
                         }
                     }));
+                    this.forceUpdate()
                 });
             }
         }
@@ -84,15 +90,71 @@ class App extends React.Component {
 
 
     checkSolution = () => {
-
+        for (let i = 0; i < this.state.crossword.grid.length; i++) {
+            for (let j = 0; j < this.state.crossword.grid[0].length; j++) {
+                if (this.state.inputGrid[i][j] === null && this.state.crossword.grid[i][j] === null) {
+                    continue;
+                }
+                if (this.state.inputGrid[i][j] === null || this.state.crossword.grid[i][j] === null) {
+                    alert("Your answer was not correct. Please try again.");
+                    return;
+                }
+                if (this.state.inputGrid[i][j].toLowerCase() !== this.state.crossword.grid[i][j]) {
+                    alert("Your answer was not correct. Please try again.");
+                    return;
+                }
+            }
+        }
+        alert("Congratulations! Press new game to generate new crossword.");
     }
 
     displaySolution = () => {
+        let tempGrid = this.state.inputGrid;
+        for (let i = 0; i < this.state.crossword.grid.length; i++) {
+            for (let j = 0; j < this.state.crossword.grid[0].length; j++) {
+                if (this.state.crossword.grid[i][j] !== null) {
+                    tempGrid[i][j] = this.state.crossword.grid[i][j].toUpperCase();
+                    document.getElementById(i*this.state.crossword.grid.length + j).value = this.state.crossword.grid[i][j].toUpperCase();
+                }
+            }
+        }
+        this.setState(state => ({
+            inputGrid: tempGrid
+        }));
+    }
 
+    resetWords = () => {
+        this.initCrossword();
+        this.setState(state => ({
+            dictionary: {}
+        }));
     }
 
     newGame = () => {
+        for (let i = 0; i < this.state.crossword.grid.length; i++) {
+            for (let j = 0; j < this.state.crossword.grid[0].length; j++) {
+                if (this.state.crossword.grid[i][j] !== null) {
+                    document.getElementById(i*this.state.crossword.grid.length + j).value = "";
+                }
+            }
+        }
+        let wordList = this.state.words.split(/[\n\r\s,.]+/);
+        wordList = wordList.filter(item => item.match(/^[A-Za-z]+$/) && item.length > 2); // TODO: get meanings called here
+        let newCrossword =  new Crossword(wordList, this.state.num);
+        let current = Array(newCrossword.grid.length).fill().map(() => Array(newCrossword.grid[0].length).fill(null));
+        this.setState(state => ({
+            open: false,
+            crossword: newCrossword,
+            inputGrid: current
+        }));
+    }
 
+    clicked = (i, j) => {
+        let newGrid = this.state.inputGrid;
+        newGrid[i][j] = document.getElementById(i*this.state.crossword.grid.length + j).value;
+        this.setState(state => ({
+            inputGrid: newGrid
+        }));
     }
 
     render() {
@@ -100,19 +162,19 @@ class App extends React.Component {
             this.getMeanings();
             return (
                 <div>
-                    <CompleteAppBar checkSolution={this.checkSolution} displaySolution={this.displaySolution} newGame={this.newGame}/>
+                    <CompleteAppBar checkSolution={this.checkSolution} displaySolution={this.displaySolution} newGame={this.newGame} resetWords={this.resetWords}/>
                     <div className="crossword-container">
-                        <CrosswordComponent grid={this.state.crossword.grid}/>
+                        <CrosswordComponent grid={this.state.crossword.grid} clicked={this.clicked} starts={this.state.crossword.gridStarts}/>
                     </div>
                     <hr/>
                     <div className="hints-container">
                         <div className="hints">
                             <h2> Across </h2>
-                            <HintsComponent hints={this.state.crossword.horizontalWords} meanings={this.state.dictionary}/>
+                            <HintsComponent hints={this.state.crossword.horizontalWords} meanings={this.state.dictionary} dict={this.state.crossword.wordNumbers}/>
                         </div>
                         <div className="hints">
                             <h2> Down </h2>
-                            <HintsComponent hints={this.state.crossword.verticalWords} meanings={this.state.dictionary}/>
+                            <HintsComponent hints={this.state.crossword.verticalWords} meanings={this.state.dictionary} dict={this.state.crossword.wordNumbers}/>
                         </div>
                     </div>
                 </div>
@@ -171,12 +233,16 @@ class App extends React.Component {
 }
 
 class CrosswordComponent extends React.Component {
+    clicked = (i, j) => {
+        this.props.clicked(i, j);
+    }
+
     render() {
         let rows = [];
         for (var i = 0; i < this.props.grid.length; i++) {
             rows.push(
                 <div className="row">
-                    <CrosswordRow rows={this.props.grid[i]} rowNum={i} />
+                    <CrosswordRow rows={this.props.grid[i]} rowNum={i} clicked={this.clicked} starts={this.props.starts} />
                 </div>
             )
         }
@@ -185,24 +251,46 @@ class CrosswordComponent extends React.Component {
 }
 
 class CrosswordRow extends React.Component {
+    clicked(i, j) {
+        this.props.clicked(i, j);
+    }
+
     render() {
         let cells = [];
         for (let i = 0; i < this.props.rows.length; i++) {
             if (this.props.rows[i]) {
-                cells.push(
-                    <div className="wrapper">
-                        <input
-                            type="text"
-                            id="fname"
-                            maxLength="1"
-                            key={this.props.rowNum * this.props.rows.length + i}
-                            className="input-box"
-                            onInput={(e) => {
-                                e.target.value = ("" + e.target.value).toUpperCase()
-                            }}
-                        />
-                    </div>);
-                // cells.push(<div className="wrapper"><div className="sub">1.</div><input type="text" id="fname" maxLength="1" key={this.props.rowNum * this.props.rows.length + i} className="input-box"/></div>);
+                if (this.props.starts[this.props.rowNum][i][0] || this.props.starts[this.props.rowNum][i][1]) {
+                    cells.push(
+                        <div className="wrapper">
+                            <input
+                                type="text"
+                                id={this.props.rowNum * this.props.rows.length + i}
+                                maxLength="1"
+                                key={this.props.rowNum * this.props.rows.length + i}
+                                className="input-box"
+                                onInput={(e) => {
+                                    e.target.value = ("" + e.target.value).toUpperCase()
+                                }}
+                            />
+                            <div className="sub">{this.props.starts[this.props.rowNum][i][2]}.</div>
+                        </div>);
+                } else {
+                    cells.push(
+                        <div className="wrapper">
+                            <input
+                                type="text"
+                                id={this.props.rowNum * this.props.rows.length + i}
+                                maxLength="1"
+                                key={this.props.rowNum * this.props.rows.length + i}
+                                className="input-box"
+                                onInput={(e) => {
+                                    e.target.value = ("" + e.target.value).toUpperCase()
+                                }}
+                            />
+                            <div className="sub"></div>
+                        </div>);
+                }
+
             } else {
                 cells.push(<div key={this.props.rowNum * this.props.rows.length + i} className="blank-box"></div>);
             }
@@ -213,13 +301,12 @@ class CrosswordRow extends React.Component {
 
 class HintsComponent extends React.Component {
     render() {
-        return (
-            <ol>
-                {this.props.hints.map((item, index) => (
-                    <li key={index}>{this.props.meanings[item]}</li>
-                ))}
-            </ol>
-        );
+        let cells = [];
+
+        for (let i = 0; i < this.props.hints.length; i++) {
+            cells.push(<div>{this.props.dict[this.props.hints[i]]}.  {this.props.meanings[this.props.hints[i]]}</div>);
+        }
+        return cells;
     }
 }
 

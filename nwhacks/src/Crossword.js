@@ -5,6 +5,7 @@ export class Crossword {
         this.verticalWords = [];
         this.horizontalWords = [];
         this.attachableChars = {};
+        this.wordNumbers = {}
         this.grid = [[]];
         this.dirs = [[0, 1], [0, -1], [1, 0], [-1, 0]];
 
@@ -24,16 +25,29 @@ export class Crossword {
             horizontal = !horizontal;
         }
 
-        this.gridStarts = [[]]
+        this.gridStarts = []
+        let number = 1;
         for (let i = 0; i < this.grid.length; i++) {
             let temp = [];
             for (let j = 0; j < this.grid[0].length; j++) {
-                let pair = [false, false];
+                let pair = [false, false, -1];
                 if (this.isHoriStart(i, j)) {
                     pair[0] = true;
+                    pair[2] = number;
                 }
                 if (this.isVertStart(i, j)) {
                     pair[1] = true;
+                    pair[2] = number;
+                }
+                if (pair[0]) {
+                    this.wordNumbers[this.getHoriWord(i, j, pair)] = number;
+                }
+                if (pair[1]) {
+                    this.wordNumbers[this.getVertWord(i, j, pair)] = number;
+                }
+
+                if (pair[0] || pair[1]) {
+                    number++;
                 }
                 temp.push(pair);
             }
@@ -92,6 +106,30 @@ export class Crossword {
             this.attachableChars[char] = []
         }
         this.attachableChars[char].push([i, j, isHorizontal])
+    }
+
+    getVertWord(i, j) {
+        let s = "";
+        while(i < this.grid.length) {
+            if (this.grid[i][j] === null) {
+                break;
+            }
+            s = s.concat(this.grid[i][j]);
+            i++;
+        }
+        return s;
+    }
+
+    getHoriWord(i, j) {
+        let s = "";
+        while(j < this.grid[0].length) {
+            if (this.grid[i][j] === null) {
+                break;
+            }
+            s = s.concat(this.grid[i][j]);
+            j++;
+        }
+        return s;
     }
 
     testCoord(word, charIndex, coord, isHorizontal) {
@@ -235,7 +273,7 @@ export class Crossword {
         if (j + 1 >= this.grid[0].length) {
             return false;
         }
-        if ((j - 1 < 0 || this.grid[i][j-1] === null) && this.grid[i][j] !== null) {
+        if ((j - 1 < 0 || this.grid[i][j-1] === null) && this.grid[i][j] !== null && this.grid[i][j+1] !== null) {
             return true;
         }
     }
@@ -244,7 +282,7 @@ export class Crossword {
         if (i + 1 >= this.grid.length) {
             return false;
         }
-        if ((i - 1 < 0 || this.grid[i-1][j] === null) && this.grid[i][j] !== null) {
+        if ((i - 1 < 0 || this.grid[i-1][j] === null) && this.grid[i][j] !== null && this.grid[i+1][j] !== null) {
             return true;
         }
     }
@@ -304,6 +342,16 @@ function testCrossword() {
         for (let j = 0; j < test.grid[0].length; j++) {
             if (test.grid[i][j]) {
                 process.stdout.write(test.grid[i][j] + " ");
+            } else {
+                process.stdout.write("  ");
+            }
+        }
+        process.stdout.write("\n");
+    }
+    for (let i = 0; i < test.grid.length; i++) {
+        for (let j = 0; j < test.grid[0].length; j++) {
+            if (test.grid[i][j]) {
+                process.stdout.write(test.grid[i][j][0] + " ");
             } else {
                 process.stdout.write("  ");
             }

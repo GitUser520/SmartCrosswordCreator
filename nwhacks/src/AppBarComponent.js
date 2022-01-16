@@ -22,6 +22,10 @@ class CompleteAppBar extends React.Component {
         this.props.newGame();
     }
 
+    resetWords() {
+        this.props.resetWords();
+    }
+
     render() {
         return (
             <Box>
@@ -56,6 +60,15 @@ class CompleteAppBar extends React.Component {
                             }}
                         >
                             New Game
+                        </Button>
+                        <Button
+                            variant={"contained"}
+                            color={"secondary"}
+                            onClick={() => {
+                                this.resetWords();
+                            }}
+                        >
+                            Reset
                         </Button>
                     </Toolbar>
                 </AppBar>
