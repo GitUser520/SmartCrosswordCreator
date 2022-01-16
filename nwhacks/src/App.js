@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 import {Crossword} from "./Crossword.js";
 import {AppBarComponent} from "./AppBarComponent.js";
+import Axios from "axios";
 
 let testStrings = [
     "autonomy",
@@ -40,26 +41,55 @@ let testNum = 30;
 
 var crossword = new Crossword(testStrings, testNum);
 
-function App() {
-    return (
-        <div>
-            <AppBarComponent />
-            <div className="crossword-container">
-                <CrosswordComponent grid={crossword.grid} />
-            </div>
-            <hr/>
-            <div className="hints-container">
-                <div className="hints">
-                    <h2> Across </h2>
-                    <HintsComponent hints={crossword.horizontalWords} />
+class App extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = { dictionary: {} };
+        this.getMeanings();
+    }
+
+    getMeanings() {
+        for (let i = 0; i < crossword.horizontalWords.length; i++) {
+            Axios.get(
+                `https://api.dictionaryapi.dev/api/v2/entries/en_US/${crossword.horizontalWords[i]}`
+            ).then((response) => {
+                //console.log(response.data[0].word + " " + response.data[0].meanings[0].definitions[0].definition)
+                this.setState(state => ({
+                    dictionary: { ...state.dictionary, [response.data[0].word]:response.data[0].meanings[0].definitions[0].definition}
+                }));
+            });
+        }
+        for (let i = 0; i < crossword.verticalWords.length; i++) {
+            Axios.get(
+                `https://api.dictionaryapi.dev/api/v2/entries/en_US/${crossword.verticalWords[i]}`
+            ).then((response) => {
+                this.setState(state => ({
+                    dictionary: { ...state.dictionary, [response.data[0].word]:response.data[0].meanings[0].definitions[0].definition}
+                }));
+            });
+        }
+    }
+    render() {
+        return (
+            <div>
+                <AppBarComponent/>
+                <div className="crossword-container">
+                    <CrosswordComponent grid={crossword.grid}/>
                 </div>
-                <div className="hints">
-                    <h2> Down </h2>
-                    <HintsComponent hints={crossword.verticalWords} />
+                <hr/>
+                <div className="hints-container">
+                    <div className="hints">
+                        <h2> Across </h2>
+                        <HintsComponent hints={crossword.horizontalWords} meanings={this.state.dictionary}/>
+                    </div>
+                    <div className="hints">
+                        <h2> Down </h2>
+                        <HintsComponent hints={crossword.verticalWords} meanings={this.state.dictionary}/>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 class CrosswordComponent extends React.Component {
@@ -95,7 +125,7 @@ class HintsComponent extends React.Component {
         return (
             <ol>
                 {this.props.hints.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index}>{this.props.meanings[item]}</li>
                 ))}
             </ol>
         );
