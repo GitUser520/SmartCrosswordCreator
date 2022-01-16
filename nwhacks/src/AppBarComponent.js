@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-export const HomePage = () => {
+export const AppBarComponent = () => {
     return (
         <CompleteAppBar />
     );
@@ -14,8 +14,8 @@ export const HomePage = () => {
 
 function CompleteAppBar() {
     return (
-        <Box padding={2}>
-            <AppBar>
+        <Box>
+            <AppBar justifyContent={"center"}>
                 <Toolbar>
                     <IconButton
                         size={"large"}
@@ -35,8 +35,8 @@ function CompleteAppBar() {
                     >
                         Login
                     </Button>
-                    <Typography variant={"h5"}>
-                        Your Personalize Crossword
+                    <Typography variant={"h5"} align="center" style={{width: "100%", alignItems: "center"}}>
+                        Smart Crossword Creator
                     </Typography>
                 </Toolbar>
             </AppBar>
