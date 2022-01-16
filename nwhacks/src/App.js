@@ -44,6 +44,10 @@ function App() {
     return (
         <div>
             <AppBarComponent />
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <div className="crossword-container">
                 <CrosswordComponent grid={crossword.grid} />
             </div>

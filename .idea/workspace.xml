@@ -19,12 +19,16 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea4ec7fc-c228-452f-9ecf-c6439985695b" name="Changes" comment="Testing commit.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nwhacks/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/nwhacks/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nwhacks/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/nwhacks/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,9 +110,17 @@
       <screen x="0" y="25" width="1440" height="828" />
     </state>
     <state x="100" y="125" width="738" height="628" key="DiffContextDialog/0.25.1440.828@0.25.1440.828" timestamp="1642299842345" />
+    <state x="29" y="93" key="MergeDialog" timestamp="1642309325232">
+      <screen x="0" y="25" width="1440" height="829" />
+    </state>
+    <state x="29" y="93" key="MergeDialog/0.25.1440.829@0.25.1440.829" timestamp="1642309325232" />
     <state x="321" y="356" key="VCS.ChangelistChooser" timestamp="1642299676377">
       <screen x="0" y="25" width="1440" height="828" />
     </state>
     <state x="321" y="356" key="VCS.ChangelistChooser/0.25.1440.828@0.25.1440.828" timestamp="1642299676377" />
+    <state x="407" y="357" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1642309407631">
+      <screen x="0" y="25" width="1440" height="829" />
+    </state>
+    <state x="407" y="357" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1440.829@0.25.1440.829" timestamp="1642309407631" />
   </component>
 </project>
