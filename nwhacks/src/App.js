@@ -1,8 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import {Crossword} from "./Crossword.js";
 
 let i = 0
+
+
 
 function App() {
   return (
