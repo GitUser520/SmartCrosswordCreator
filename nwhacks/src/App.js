@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import {Crossword} from "./Crossword.js";
-import {AppBarComponent} from "./AppBarComponent.js";
+import CompleteAppBar from "./AppBarComponent.js";
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -34,7 +34,7 @@ class App extends React.Component {
 
     initCrossword() {
         let wordList = this.state.words.split(/[\n\r\s,.]+/);
-        wordList = wordList.filter(item => item.match(/^[A-Za-z]+$/) && item.length > 2);
+        wordList = wordList.filter(item => item.match(/^[A-Za-z]+$/) && item.length > 2); // TODO: get meanings called here
         this.setState(state => ({
             open: !state.open,
             crossword: new Crossword(wordList, state.num)
@@ -82,12 +82,25 @@ class App extends React.Component {
         }
     }
 
+
+    checkSolution = () => {
+
+    }
+
+    displaySolution = () => {
+
+    }
+
+    newGame = () => {
+
+    }
+
     render() {
         if (!this.state.open) {
             this.getMeanings();
             return (
                 <div>
-                    <AppBarComponent state={this.state}/>
+                    <CompleteAppBar checkSolution={this.checkSolution} displaySolution={this.displaySolution} newGame={this.newGame}/>
                     <div className="crossword-container">
                         <CrosswordComponent grid={this.state.crossword.grid}/>
                     </div>
@@ -108,7 +121,8 @@ class App extends React.Component {
         return (
             <div>
                 <Dialog open={this.state.open} onClose={() => this.initCrossword()} fullScreen TransitionComponent={Transition}>
-                    <DialogTitle className = "header" fontSize = "30px">Smart Crossword Creator
+                    <DialogTitle className = "header" fontSize = "30px">
+                        Smart Crossword Creator
                     </DialogTitle>
                     <DialogContent className = "header">
                         <DialogContentText>
@@ -151,7 +165,6 @@ class App extends React.Component {
                        </Button>
                     </DialogActions>
                 </Dialog>
-                <AppBarComponent/>
             </div>
         );
     }
