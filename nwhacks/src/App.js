@@ -3,9 +3,16 @@ import './App.css';
 import React from 'react';
 import {Crossword} from "./Crossword.js";
 import {AppBarComponent} from "./AppBarComponent.js";
-import {
-    TextField
-} from "@mui/material"
+
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+
 import { useLocation } from "react-router-dom";
 
 import Axios from "axios";
@@ -46,17 +53,17 @@ let testNum = 30;
 
 var crossword = new Crossword(testStrings, testNum);
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
+
 class App extends React.Component {
     constructor(props) {
         super(props);
-        var text = this.props.location.state.text;
-        console.log(text);
-        console.log(this.props);
         this.state = {
+            open: true,
             dictionary: {},
-            // text: this.props.location.param1
         };
-        // console.log(this.state.text);
         this.getMeanings();
     }
 
@@ -66,6 +73,7 @@ class App extends React.Component {
                 `https://api.dictionaryapi.dev/api/v2/entries/en_US/${crossword.horizontalWords[i]}`
             ).then((response) => {
                 this.setState(state => ({
+                    open: state.open,
                     dictionary: { ...state.dictionary, [response.data[0].word]:response.data[0].meanings[0].definitions[0].definition}
                 }));
             });
@@ -75,14 +83,37 @@ class App extends React.Component {
                 `https://api.dictionaryapi.dev/api/v2/entries/en_US/${crossword.verticalWords[i]}`
             ).then((response) => {
                 this.setState(state => ({
+                    open: state.open,
                     dictionary: { ...state.dictionary, [response.data[0].word]:response.data[0].meanings[0].definitions[0].definition}
                 }));
             });
         }
     }
+
     render() {
         return (
             <div>
+                <Dialog open={this.state.open} onClose={() => this.setState({ open: !this.state.open })} fullScreen TransitionComponent={Transition}>
+                    <DialogTitle>Please Enter Vocabulary</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Enter vocabulary
+                        </DialogContentText>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="Words"
+                            multiline
+                            rows={36}
+                            fullWidth
+                            variant="standard"
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => this.setState({ open: !this.state.open })}>Finish</Button>
+                    </DialogActions>
+                </Dialog>
                 <AppBarComponent/>
                 <div className="crossword-container">
                     <CrosswordComponent grid={crossword.grid}/>
@@ -122,7 +153,7 @@ class CrosswordRow extends React.Component {
         let cells = [];
         for (let i = 0; i < this.props.rows.length; i++) {
             if (this.props.rows[i]) {
-                cells.push(<div className="wrapper"><input type="text" id="fname" maxLength="1" key={this.props.rowNum * this.props.rows.length + i} className="input-box"/></div>);
+                cells.push(<div className="wrapper"><input type="text" id="fname" maxLength="1" key={this.props.rowNum * this.props.rows.length + i} className="input-box" onInput={(e) => {e.target.value = ("" + e.target.value).toUpperCase()}}/></div>);
                 // cells.push(<div className="wrapper"><div className="sub">1.</div><input type="text" id="fname" maxLength="1" key={this.props.rowNum * this.props.rows.length + i} className="input-box"/></div>);
             } else {
                 cells.push(<div key={this.props.rowNum * this.props.rows.length + i} className="blank-box"></div>);
