@@ -3,10 +3,29 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ea4ec7fc-c228-452f-9ecf-c6439985695b" name="Changes" comment="Testing commit.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nwhacks/src/Crossword.js" beforeDir="false" afterPath="$PROJECT_DIR$/nwhacks/src/Crossword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nwhacks/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/nwhacks/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nwhacks/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/nwhacks/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,5 +100,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Testing commit." />
     <option name="LAST_COMMIT_MESSAGE" value="Testing commit." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="100" y="125" width="738" height="628" key="DiffContextDialog" timestamp="1642299842345">
+      <screen x="0" y="25" width="1440" height="828" />
+    </state>
+    <state x="100" y="125" width="738" height="628" key="DiffContextDialog/0.25.1440.828@0.25.1440.828" timestamp="1642299842345" />
+    <state x="321" y="356" key="VCS.ChangelistChooser" timestamp="1642299676377">
+      <screen x="0" y="25" width="1440" height="828" />
+    </state>
+    <state x="321" y="356" key="VCS.ChangelistChooser/0.25.1440.828@0.25.1440.828" timestamp="1642299676377" />
   </component>
 </project>
