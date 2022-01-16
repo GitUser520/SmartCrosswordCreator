@@ -8,8 +8,8 @@ let i = 0
 
 
 function App() {
-  return (
-    <body>
+    return (
+        <body>
         <h1 className = "App">
             Your Personalized Crossword
         </h1>
@@ -19,15 +19,15 @@ function App() {
         <hr/>
         <h2> Across </h2>
         <div className="App">
-             <HintsComponent grid={[["t","s","z"],["a","a","b"],["c","a","b"]]} />
+            <HintsComponent grid={[["t","s","z"],["a","a","b"],["c","a","b"]]} />
         </div>
         <h2> Below </h2>
         <div className="App">
             <HintsComponent grid={[["t","s","z"],["a","a","b"],["c","a","b"]]} />
         </div>
 
-    </body>
-  );
+        </body>
+    );
 }
 
 class CrosswordComponent extends React.Component {
@@ -53,4 +53,3 @@ class HintsComponent extends React.Component {
 
 
 export default App;
-
