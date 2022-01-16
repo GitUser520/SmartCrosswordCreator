@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {
     BrowserRouter,
     Routes,
-    Route
+    Route,
+    useLocation
 } from "react-router-dom";
 import './index.css';
 import App from './App';
@@ -19,6 +20,13 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 );
+
+// function AppTwo() {
+//     const { text } = useParams();
+//     return (
+//         <App props = { text } />
+//     )
+// }
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
