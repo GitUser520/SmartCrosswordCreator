@@ -9,49 +9,10 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 
-import { useLocation } from "react-router-dom";
-
 import Axios from "axios";
-
-let testStrings = [
-    "autonomy",
-    "irk",
-    "abstruse",
-    "impregnable",
-    "mercenary",
-    "becoming",
-    "futile",
-    "furtive",
-    "acclaim",
-    "aboveboard",
-    "contrite",
-    "retiring",
-    "iconoclastic",
-    "redundant",
-    "impugn",
-    "ineffable",
-    "debunk",
-    "extolling",
-    "voluble",
-    "loquacious",
-    "gregarious",
-    "didactic",
-    "obstreperous",
-    "mollify",
-    "esoteric",
-    "languorous",
-    "lethargic",
-    "officious",
-    "tenacity",
-    "veracity"
-];
-let testNum = 30;
-
-var crossword = new Crossword(testStrings, testNum);
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -63,72 +24,108 @@ class App extends React.Component {
         this.state = {
             open: true,
             dictionary: {},
+            crossword: null,
+            words: "",
+            num: 10
         };
-        this.getMeanings();
+    }
+
+    initCrossword() {
+        let wordList = this.state.words.split(/[\n\r\s]+/);
+        wordList = wordList.filter(item => item);
+        this.setState(state => ({
+            open: !state.open,
+            crossword: new Crossword(wordList, state.num)
+        }));
+    }
+
+    handleWordsChange = (e) => {
+        this.setState(state => ({
+            words: e.target.value
+        }));
+    }
+
+    handleNumsChange = (e) => {
+        this.setState(state => ({
+            num: e.target.value
+        }));
     }
 
     getMeanings() {
-        for (let i = 0; i < crossword.horizontalWords.length; i++) {
-            Axios.get(
-                `https://api.dictionaryapi.dev/api/v2/entries/en_US/${crossword.horizontalWords[i]}`
-            ).then((response) => {
-                this.setState(state => ({
-                    open: state.open,
-                    dictionary: { ...state.dictionary, [response.data[0].word]:response.data[0].meanings[0].definitions[0].definition}
-                }));
-            });
-        }
-        for (let i = 0; i < crossword.verticalWords.length; i++) {
-            Axios.get(
-                `https://api.dictionaryapi.dev/api/v2/entries/en_US/${crossword.verticalWords[i]}`
-            ).then((response) => {
-                this.setState(state => ({
-                    open: state.open,
-                    dictionary: { ...state.dictionary, [response.data[0].word]:response.data[0].meanings[0].definitions[0].definition}
-                }));
-            });
+        if (Object.keys(this.state.dictionary).length === 0) {
+            for (let i = 0; i < this.state.crossword.horizontalWords.length; i++) {
+                Axios.get(
+                    `https://api.dictionaryapi.dev/api/v2/entries/en_US/${this.state.crossword.horizontalWords[i]}`
+                ).then((response) => {
+                    this.setState(state => ({
+                        dictionary: {
+                            ...state.dictionary,
+                            [response.data[0].word]: response.data[0].meanings[0].definitions[0].definition
+                        }
+                    }));
+                });
+            }
+            for (let i = 0; i < this.state.crossword.verticalWords.length; i++) {
+                Axios.get(
+                    `https://api.dictionaryapi.dev/api/v2/entries/en_US/${this.state.crossword.verticalWords[i]}`
+                ).then((response) => {
+                    this.setState(state => ({
+                        dictionary: {
+                            ...state.dictionary,
+                            [response.data[0].word]: response.data[0].meanings[0].definitions[0].definition
+                        }
+                    }));
+                });
+            }
         }
     }
 
     render() {
+        if (!this.state.open) {
+            this.getMeanings();
+            return (
+                <div>
+                    <div className="crossword-container">
+                        <CrosswordComponent grid={this.state.crossword.grid}/>
+                    </div>
+                    <hr/>
+                    <div className="hints-container">
+                        <div className="hints">
+                            <h2> Across </h2>
+                            <HintsComponent hints={this.state.crossword.horizontalWords} meanings={this.state.dictionary}/>
+                        </div>
+                        <div className="hints">
+                            <h2> Down </h2>
+                            <HintsComponent hints={this.state.crossword.verticalWords} meanings={this.state.dictionary}/>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
         return (
             <div>
-                <Dialog open={this.state.open} onClose={() => this.setState({ open: !this.state.open })} fullScreen TransitionComponent={Transition}>
+                <Dialog open={this.state.open} onClose={() => this.initCrossword()} fullScreen TransitionComponent={Transition}>
                     <DialogTitle>Please Enter Vocabulary</DialogTitle>
                     <DialogContent>
-                        <DialogContentText>
-                            Enter vocabulary
-                        </DialogContentText>
+                        <br />
+                        <TextField ref="num" defaultValue={10} fullWidth label="Number of words per crossword" type="number" onChange={this.handleNumsChange}/>
                         <TextField
+                            ref="words"
                             autoFocus
-                            margin="dense"
+                            margin="normal"
                             id="name"
                             label="Words"
                             multiline
-                            rows={36}
+                            rows={30}
                             fullWidth
-                            variant="standard"
+                            onChange={this.handleWordsChange}
                         />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => this.setState({ open: !this.state.open })}>Finish</Button>
+                        <Button onClick={() => this.initCrossword()}>Finish</Button>
                     </DialogActions>
                 </Dialog>
                 <AppBarComponent/>
-                <div className="crossword-container">
-                    <CrosswordComponent grid={crossword.grid}/>
-                </div>
-                <hr/>
-                <div className="hints-container">
-                    <div className="hints">
-                        <h2> Across </h2>
-                        <HintsComponent hints={crossword.horizontalWords} meanings={this.state.dictionary}/>
-                    </div>
-                    <div className="hints">
-                        <h2> Down </h2>
-                        <HintsComponent hints={crossword.verticalWords} meanings={this.state.dictionary}/>
-                    </div>
-                </div>
             </div>
         );
     }

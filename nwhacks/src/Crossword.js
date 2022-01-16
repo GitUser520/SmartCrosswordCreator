@@ -10,6 +10,10 @@ export class Crossword {
 
         let horizontal = true;
         for (let i = 0; i < num; i++) {
+            if (this.words.length === 0) {
+                console.log("No additional words can be added");
+                break;
+            }
             if (!this.addWord(horizontal)) {
                 if (!this.addWord(!horizontal)) {
                     console.log("No additional words can be added");
