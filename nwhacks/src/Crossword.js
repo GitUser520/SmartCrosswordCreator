@@ -19,6 +19,22 @@ export class Crossword {
             }
             horizontal = !horizontal;
         }
+
+        this.gridStarts = [[]]
+        for (let i = 0; i < this.grid.length; i++) {
+            let temp = [];
+            for (let j = 0; j < this.grid[0].length; j++) {
+                let pair = [false, false];
+                if (this.isHoriStart(i, j)) {
+                    pair[0] = true;
+                }
+                if (this.isVertStart(i, j)) {
+                    pair[1] = true;
+                }
+                temp.push(pair);
+            }
+            this.gridStarts.push(temp);
+        }
     }
 
     addWord(isHorizontal) {
@@ -208,6 +224,24 @@ export class Crossword {
                 this.addChar(word.charAt(charIndex+i), coord[0]+i, coord[1], isHorizontal);
                 this.grid[coord[0]+i][coord[1]] = word.charAt(charIndex + i);
             }
+        }
+    }
+
+    isHoriStart(i, j) {
+        if (j + 1 >= this.grid[0].length) {
+            return false;
+        }
+        if ((j - 1 < 0 || this.grid[i][j-1] === null) && this.grid[i][j] !== null) {
+            return true;
+        }
+    }
+
+    isVertStart(i, j) {
+        if (i + 1 >= this.grid.length) {
+            return false;
+        }
+        if ((i - 1 < 0 || this.grid[i-1][j] === null) && this.grid[i][j] !== null) {
+            return true;
         }
     }
 }

@@ -41,7 +41,7 @@ let testNum = 30;
 
 var crossword = new Crossword(testStrings, testNum);
 
-class App extends React.Component{
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = { dictionary: {} };
@@ -53,7 +53,6 @@ class App extends React.Component{
             Axios.get(
                 `https://api.dictionaryapi.dev/api/v2/entries/en_US/${crossword.horizontalWords[i]}`
             ).then((response) => {
-                //console.log(response.data[0].word + " " + response.data[0].meanings[0].definitions[0].definition)
                 this.setState(state => ({
                     dictionary: { ...state.dictionary, [response.data[0].word]:response.data[0].meanings[0].definitions[0].definition}
                 }));
@@ -111,7 +110,8 @@ class CrosswordRow extends React.Component {
         let cells = [];
         for (let i = 0; i < this.props.rows.length; i++) {
             if (this.props.rows[i]) {
-                cells.push(<input type="text" id="fname" maxLength="1" key={this.props.rowNum * this.props.rows.length + i} className="input-box"/>);
+                cells.push(<div className="wrapper"><input type="text" id="fname" maxLength="1" key={this.props.rowNum * this.props.rows.length + i} className="input-box"/></div>);
+                // cells.push(<div className="wrapper"><div className="sub">1.</div><input type="text" id="fname" maxLength="1" key={this.props.rowNum * this.props.rows.length + i} className="input-box"/></div>);
             } else {
                 cells.push(<div key={this.props.rowNum * this.props.rows.length + i} className="blank-box"></div>);
             }
