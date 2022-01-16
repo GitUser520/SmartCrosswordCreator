@@ -49,7 +49,14 @@ var crossword = new Crossword(testStrings, testNum);
 class App extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { dictionary: {} };
+        var text = this.props.location.state.text;
+        console.log(text);
+        console.log(this.props);
+        this.state = {
+            dictionary: {},
+            // text: this.props.location.param1
+        };
+        // console.log(this.state.text);
         this.getMeanings();
     }
 

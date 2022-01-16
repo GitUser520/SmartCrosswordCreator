@@ -23,7 +23,7 @@ function Menu() {
                 to={{
                     pathname: "/app",
                     state: {
-                        textValue: {}
+                        text: "Hello"
                     }
                 }}
             >
