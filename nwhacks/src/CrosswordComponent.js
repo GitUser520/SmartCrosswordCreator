@@ -24,7 +24,7 @@ export const CrosswordComponentReact = (props) => {
     for (var i = 0; i < props.grid.length; i++) {
         for (var j = 0; j < props.grid[0].length; j++) {
             indents.push(
-                <TextField variant="outlined" label={"letter"}>
+                <TextField id={"outlined-basic"} label={"letter"}>
                 </TextField>
             );
         }

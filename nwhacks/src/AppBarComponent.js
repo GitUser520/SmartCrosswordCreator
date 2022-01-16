@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
     Box,
     AppBar, Button, Toolbar,
@@ -17,15 +18,12 @@ function CompleteAppBar() {
         <Box>
             <AppBar justifyContent={"center"}>
                 <Toolbar>
-                    <IconButton
-                        size={"large"}
-                        edge={"start"}
-                        onClick={() => {
-                            alert("This should be the menu button.");
-                        }}
-                        children={<MenuIcon />}
-                    >
-                    </IconButton>
+                    <Link style={{ textDecoration: 'none' }} to="/">
+                        <IconButton size={"large"}
+                                    edge={"start"}
+                                    children={<MenuIcon />}>
+                        </IconButton>
+                    </Link>
                     <Button
                         variant={"contained"}
                         color={"secondary"}

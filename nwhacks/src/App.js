@@ -3,6 +3,11 @@ import './App.css';
 import React from 'react';
 import {Crossword} from "./Crossword.js";
 import {AppBarComponent} from "./AppBarComponent.js";
+import {
+    TextField
+} from "@mui/material"
+import { useLocation } from "react-router-dom";
+
 
 let testStrings = [
     "autonomy",
@@ -41,9 +46,23 @@ let testNum = 30;
 var crossword = new Crossword(testStrings, testNum);
 
 function App() {
+
+    // const location = useLocation();
+    // const { textValue } = location.state;
+    const textValue = "Hello";
+
     return (
         <div>
             <AppBarComponent />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <TextField label={ textValue }>
+
+            </TextField>
             <div className="crossword-container">
                 <CrosswordComponent grid={crossword.grid} />
             </div>
