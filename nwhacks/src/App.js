@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import {Crossword} from "./Crossword.js";
+import {HomePage} from "./HomePage.js";
 
 let testStrings = [
     "autonomy",
@@ -42,9 +43,10 @@ var crossword = new Crossword(testStrings, testNum);
 function App() {
     return (
         <div>
-            <h1 className="header">
-                Your Personalized Crossword
-            </h1>
+            {/*<h1 className="header">*/}
+            {/*    Your Personalized Crossword*/}
+            {/*</h1>*/}
+            <HomePage />
             <div className="crossword-container">
                 <CrosswordComponent grid={crossword.grid} />
             </div>

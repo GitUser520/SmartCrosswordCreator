@@ -36,7 +36,7 @@ function CompleteAppBar() {
                         Login
                     </Button>
                     <Typography variant={"h5"}>
-                        Placeholder for Crossword Name
+                        Your Personalize Crossword
                     </Typography>
                 </Toolbar>
             </AppBar>
