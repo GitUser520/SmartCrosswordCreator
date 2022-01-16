@@ -14,8 +14,8 @@ export const AppBarComponent = () => {
 
 function CompleteAppBar() {
     return (
-        <Box padding={2}>
-            <AppBar>
+        <Box>
+            <AppBar justifyContent={"center"}>
                 <Toolbar>
                     <IconButton
                         size={"large"}
@@ -35,8 +35,8 @@ function CompleteAppBar() {
                     >
                         Login
                     </Button>
-                    <Typography variant={"h5"}>
-                        Your Personalize Crossword
+                    <Typography variant={"h5"} align="center" style={{width: "100%", alignItems: "center"}}>
+                        Smart Crossword Creator
                     </Typography>
                 </Toolbar>
             </AppBar>
