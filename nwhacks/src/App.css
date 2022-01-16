@@ -1,8 +1,29 @@
-.App {
+.header {
   text-align: center;
 }
 
 .input-box {
-  width:20px;
-  height:20px;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 0;
+  border: 1px black solid;
+  text-align: center;
+}
+
+.blank-box {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.crossword-container {
+  text-align: center;
+  overflow: scroll;
+}
+
+.row {
+  display: flex;
 }
