@@ -49,13 +49,15 @@ function App() {
                 <CrosswordComponent grid={crossword.grid} />
             </div>
             <hr/>
-            <h2> Across </h2>
-            <div>
-                <HintsComponent across={crossword.horizontalWords} />
-            </div>
-            <h2> Down </h2>
-            <div>
-                <HintsComponent down={crossword.verticalWords} />
+            <div className="hints-container">
+                <div className="hints">
+                    <h2> Across </h2>
+                    <HintsComponent hints={crossword.horizontalWords} />
+                </div>
+                <div className="hints">
+                    <h2> Down </h2>
+                    <HintsComponent hints={crossword.verticalWords} />
+                </div>
             </div>
         </div>
     );
@@ -63,11 +65,13 @@ function App() {
 
 class CrosswordComponent extends React.Component {
     render() {
-        var rows = [];
+        let rows = [];
         for (var i = 0; i < this.props.grid.length; i++) {
-            rows.push(<div className="row">
-                <CrosswordRow rows={this.props.grid[i]} rowNum={i} />
-            </div>)
+            rows.push(
+                <div className="row">
+                    <CrosswordRow rows={this.props.grid[i]} rowNum={i} />
+                </div>
+            )
         }
         return rows;
     }
@@ -75,7 +79,7 @@ class CrosswordComponent extends React.Component {
 
 class CrosswordRow extends React.Component {
     render() {
-        var cells = [];
+        let cells = [];
         for (let i = 0; i < this.props.rows.length; i++) {
             if (this.props.rows[i]) {
                 cells.push(<input type="text" id="fname" maxLength="1" key={this.props.rowNum * this.props.rows.length + i} className="input-box"/>);
@@ -89,8 +93,13 @@ class CrosswordRow extends React.Component {
 
 class HintsComponent extends React.Component {
     render() {
-        var indents = [];
-        return indents;
+        return (
+            <ol>
+                {this.props.hints.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </ol>
+        );
     }
 }
 

@@ -5,11 +5,13 @@
 .input-box {
   box-sizing: border-box;
   display: inline-block;
+  outline: none;
   width: 30px;
   height: 30px;
   border-radius: 0;
   border: 1px black solid;
   text-align: center;
+  margin-right: -1px;
 }
 
 .blank-box {
@@ -17,6 +19,7 @@
   display: inline-block;
   width: 30px;
   height: 30px;
+  margin-right: -1px;
 }
 
 .crossword-container {
@@ -25,8 +28,19 @@
   justify-content: center;
   text-align: center;
   overflow: scroll;
+  padding-bottom: 10px;
+}
+
+.hints-container {
+  display: flex;
+  margin-left: 24px;
+}
+
+.hints {
+  flex: 1 0 0;
 }
 
 .row {
   display: flex;
+  margin-bottom: -1px;
 }
