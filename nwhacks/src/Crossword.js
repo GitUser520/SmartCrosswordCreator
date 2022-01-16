@@ -1,4 +1,4 @@
-class Crossword {
+export class Crossword {
     constructor(words, num) {
         this.words = [...words];
         shuffle(this.words);
