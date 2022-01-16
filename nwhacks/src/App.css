@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.input-box {
+  width:20px;
+  height:20px;
+}
