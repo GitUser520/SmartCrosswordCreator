@@ -27,21 +27,6 @@ class CompleteAppBar extends React.Component {
             <Box>
                 <AppBar justifyContent={"center"}>
                     <Toolbar>
-                        <Link style={{textDecoration: 'none'}} to="/">
-                            <IconButton size={"large"}
-                                        edge={"start"}
-                                        children={<MenuIcon/>}>
-                            </IconButton>
-                        </Link>
-                        <Button
-                            variant={"contained"}
-                            color={"secondary"}
-                            onClick={() => {
-                                alert("This should be the login button.");
-                            }}
-                        >
-                            Login
-                        </Button>
                         <Typography variant={"h5"} align="center" style={{width: "100%", alignItems: "center"}}>
                             Smart Crossword Creator
                         </Typography>

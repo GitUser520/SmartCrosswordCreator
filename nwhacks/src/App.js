@@ -189,7 +189,19 @@ class CrosswordRow extends React.Component {
         let cells = [];
         for (let i = 0; i < this.props.rows.length; i++) {
             if (this.props.rows[i]) {
-                cells.push(<div className="wrapper"><input type="text" id="fname" maxLength="1" key={this.props.rowNum * this.props.rows.length + i} className="input-box" onInput={(e) => {e.target.value = ("" + e.target.value).toUpperCase()}}/></div>);
+                cells.push(
+                    <div className="wrapper">
+                        <input
+                            type="text"
+                            id="fname"
+                            maxLength="1"
+                            key={this.props.rowNum * this.props.rows.length + i}
+                            className="input-box"
+                            onInput={(e) => {
+                                e.target.value = ("" + e.target.value).toUpperCase()
+                            }}
+                        />
+                    </div>);
                 // cells.push(<div className="wrapper"><div className="sub">1.</div><input type="text" id="fname" maxLength="1" key={this.props.rowNum * this.props.rows.length + i} className="input-box"/></div>);
             } else {
                 cells.push(<div key={this.props.rowNum * this.props.rows.length + i} className="blank-box"></div>);
