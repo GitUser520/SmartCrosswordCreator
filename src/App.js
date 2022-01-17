@@ -44,6 +44,7 @@ class App extends React.Component {
             crossword: newCrossword,
             inputGrid: current,
         }));
+        this.render();
     }
 
     handleWordsChange = (e) => {

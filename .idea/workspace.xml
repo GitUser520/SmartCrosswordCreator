@@ -1,33 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea4ec7fc-c228-452f-9ecf-c6439985695b" name="Changes" comment="small change to workspace?" />
+    <list default="true" id="d9790c97-b079-41e2-9fe1-473cf9ea881a" name="Changes" comment="Removed Login and Menu buttons.">
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,16 +12,15 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-        <entry key="$PROJECT_DIR$/app" value="main" />
+        <entry key="$PROJECT_DIR$/.." value="new-branch-homepage" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="23ka4v2sWIzsZHV1GEnxwCh16pt" />
+  <component name="ProjectId" id="23kbkG0KhfLh7sxvipDLsF7EeZm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,52 +31,127 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ea4ec7fc-c228-452f-9ecf-c6439985695b" name="Changes" comment="" />
-      <created>1642280351930</created>
+      <changelist id="d9790c97-b079-41e2-9fe1-473cf9ea881a" name="Changes" comment="" />
+      <created>1642281172139</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1642280351930</updated>
-      <workItem from="1642281649423" duration="1289000" />
+      <updated>1642281172139</updated>
+      <workItem from="1642285411498" duration="22953000" />
+      <workItem from="1642348637007" duration="10245000" />
+      <workItem from="1642381667202" duration="722000" />
     </task>
-    <task id="LOCAL-00001" summary="Testing commit.">
-      <created>1642280387325</created>
+    <task id="LOCAL-00001" summary="Initial commit.">
+      <created>1642281240480</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1642280387325</updated>
+      <updated>1642281240480</updated>
     </task>
-    <task id="LOCAL-00002" summary="Changed layout of pop-up">
-      <created>1642355048878</created>
+    <task id="LOCAL-00002" summary="Refactored code to use Material UI.">
+      <created>1642299348936</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1642355048878</updated>
+      <updated>1642299348936</updated>
     </task>
-    <task id="LOCAL-00003" summary="deleted menu and menu/login buttons">
-      <created>1642355748874</created>
+    <task id="LOCAL-00003" summary="incomplete home page">
+      <created>1642300415009</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1642355748874</updated>
+      <updated>1642300415009</updated>
     </task>
-    <task id="LOCAL-00004" summary="small change to workspace?">
-      <created>1642357041368</created>
+    <task id="LOCAL-00004" summary="incomplete home page">
+      <created>1642300422466</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1642357041368</updated>
+      <updated>1642300422466</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Revert &quot;Added basic template for UI (header, grid-like grid with editable elements, across and below titles)&quot;&#10;&#10;This reverts commit ec39ef47">
+      <created>1642300605951</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1642300605951</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Revert to RedOrangeGamez's commit">
+      <created>1642300820730</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1642300820730</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Incomplete Commit">
+      <created>1642302023007</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1642302023007</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Menu Bar 1.0">
+      <created>1642306525242</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1642306525242</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added menu bar.">
+      <created>1642307245903</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1642307245903</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Refactored app bar.">
+      <created>1642308066001</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1642308066001</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Recentered bar.">
+      <created>1642309247106</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1642309247106</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Unfinished homepage.">
+      <created>1642312879093</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1642312879093</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Temporary commit before bed.">
+      <created>1642316267518</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1642316267518</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Synced state from App.js to AppBarComponent.js">
+      <created>1642354214265</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1642354214265</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Removed Login and Menu buttons.">
+      <created>1642357361697</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1642357361697</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,40 +162,39 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Testing commit." />
-    <MESSAGE value="Changed layout of pop-up" />
-    <MESSAGE value="deleted menu and menu/login buttons" />
-    <MESSAGE value="small change to workspace?" />
-    <option name="LAST_COMMIT_MESSAGE" value="small change to workspace?" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="100" y="125" width="738" height="628" key="DiffContextDialog" timestamp="1642299842345">
-      <screen x="0" y="25" width="1440" height="828" />
-    </state>
-    <state x="100" y="125" width="738" height="628" key="DiffContextDialog/0.25.1440.828@0.25.1440.828" timestamp="1642299842345" />
-    <state x="29" y="93" key="MergeDialog" timestamp="1642309325232">
-      <screen x="0" y="25" width="1440" height="829" />
-    </state>
-    <state x="29" y="93" key="MergeDialog/0.25.1440.829@0.25.1440.829" timestamp="1642309325232" />
-    <state x="321" y="356" key="VCS.ChangelistChooser" timestamp="1642299676377">
-      <screen x="0" y="25" width="1440" height="828" />
-    </state>
-    <state x="321" y="356" key="VCS.ChangelistChooser/0.25.1440.828@0.25.1440.828" timestamp="1642299676377" />
-    <state x="282" y="176" key="Vcs.Push.Dialog.v2" timestamp="1642355752809">
-      <screen x="0" y="25" width="1440" height="829" />
-    </state>
-    <state x="282" y="176" key="Vcs.Push.Dialog.v2/0.25.1440.829@0.25.1440.829" timestamp="1642355752809" />
-    <state x="407" y="357" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1642355585701">
-      <screen x="0" y="25" width="1440" height="829" />
-    </state>
-    <state x="407" y="357" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1440.829@0.25.1440.829" timestamp="1642355585701" />
+    <MESSAGE value="Initial commit." />
+    <MESSAGE value="Refactored code to use Material UI." />
+    <MESSAGE value="incomplete home page" />
+    <MESSAGE value="Revert &quot;Added basic template for UI (header, grid-like grid with editable elements, across and below titles)&quot;&#10;&#10;This reverts commit ec39ef47" />
+    <MESSAGE value="Revert to RedOrangeGamez's commit" />
+    <MESSAGE value="Incomplete Commit" />
+    <MESSAGE value="Menu Bar 1.0" />
+    <MESSAGE value="Added menu bar." />
+    <MESSAGE value="Refactored app bar." />
+    <MESSAGE value="Recentered bar." />
+    <MESSAGE value="Unfinished homepage." />
+    <MESSAGE value="Temporary commit before bed." />
+    <MESSAGE value="Synced state from App.js to AppBarComponent.js" />
+    <MESSAGE value="Removed Login and Menu buttons." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed Login and Menu buttons." />
   </component>
 </project>
