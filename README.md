@@ -9,6 +9,8 @@ Download now from: https://github.com/GitUser520/SmartCrosswordCreator
 
 Built with HTML, CSS, Javascript, React, Material UI, and Node.js.
 
+Youtube: https://youtu.be/F-47gxkxpfA
+
 ## Build
 
 Navigate to the nwhacks folder. 
